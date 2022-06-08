@@ -1,0 +1,23 @@
+<h2>Patient Details</h2>
+<div class="container">
+    <div class="row">
+        <div class="search">
+            <input type="text" name="search" [(ngModel)]="search" placeholder="Search"> 
+        </div>
+         <tbody>
+             <tr *ngFor="let patient of patients | filter:search">
+                 <td>Name : {{patient.name}} ,</td>
+                 <td> Doctor : {{patient.visitedDoctor}} </td>
+             </tr>
+         </tbody>
+    </div>
+
+
+
+
+  
+  
+     
+
+
+   

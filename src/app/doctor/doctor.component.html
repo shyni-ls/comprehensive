@@ -1,0 +1,84 @@
+<h3>Doctor Information</h3>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container">
+  <div class="Doc-details">
+    <div class="search">
+      <input type="text" name="search" [(ngModel)]="search" placeholder="Search"> 
+  </div>
+   <tbody>
+       <tr *ngFor="let doctor of doctors" >
+           <td>Name : {{doctor.name}} ,</td>
+           <td> Doctor : {{doctor.specilistField}} </td>
+       </tr>
+   </tbody><!--
+    <div class="drop-box">
+       <select [(ngModel)]="selectedDoctor">
+         <option *ngFor="let doctor of doctors" [value]="doctor">
+           {{doctor?.name}}
+         </option>
+       </select>
+       <br>
+       {{selectedDoctor?.name}}
+       {{selectedDoctor?.id}}
+       
+       selected doctor is {{selectedDoctor}}
+    </div>-->
+      <div class="table-display"><table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name </th>
+            <th scope="col">specialistField</th>
+            <th scope="col">Patient attended</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doctor of doctors"> 
+            <th scope="row">{{doctor.id}}</th>
+            <td>{{doctor?.name}}</td>
+            <td>{{doctor?.specilistField}}</td>
+            <td>1</td>
+          </tr></tbody></table></div></div>  
+  </div>
+      
+  
+<div class="container">
+  <div class="add-doc">
+    <div class="modal-button">
+      <button class="btn btn-lg btn-outline-primary" (click)="open(addDoctorcontent)">Add New Doctor</button> 
+    </div>
+  </div>
+</div>
+ 
+ <!-- ADD Modal -->
+ <ng-template #addDoctorcontent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="addDoctorModal">Create Doctor Information</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddDoctor(addForm)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" ngModel name="name" class="form-control" id="name"  >
+            </div><div class="form-group">
+            <label for="age">Age</label>
+              <input type="text" ngModel name="age" class="form-control" id="age"  >
+            </div><div class="form-group">
+            <label for="gender">Gender</label>
+              <input type="text" ngModel name="gender" class="form-control" id="gender" 
+              >
+            </div>
+            <div class="form-group">
+            <label for="specilistField">Specialist Field</label>
+              <input type="text" ngModel name="specilistField" class="form-control" id="specilistField"
+               >
+            </div>
+            <button  type="submit" class="btn btn-outline-dark" >Save</button>
+          </form>
+        </div>
+      </ng-template>
+       <hr>
+      <pre>{{ closeResult }}</pre>
+
